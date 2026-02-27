@@ -1,22 +1,22 @@
 import java.util.*;
 
-class Solution {
-    public int[] solution(int[] arr) {
-        Deque<Integer> result = new ArrayDeque<>();
-        
-        for (int num : arr) {
-            if (result.isEmpty() || result.peekLast() != num) {
-                result.addLast(num);
+public class Solution {
+    public int[] solution(int []arr) {
+        int temp = 10;
+        Queue<Integer>q = new ArrayDeque<>();
+        for(int n : arr){
+            if(temp==n)
+                continue;
+            else{
+                temp=n;
+                q.offer(temp);
             }
         }
-
-        // Deque를 배열로 변환
-        int[] answer = new int[result.size()];
+        int[]answer = new int[q.size()];
         int i = 0;
-        for (int num : result) {
-            answer[i++] = num;
+        while(!q.isEmpty()){
+            answer[i++] = q.poll();
         }
-
         return answer;
     }
 }
